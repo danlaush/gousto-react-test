@@ -16,11 +16,21 @@ class ProductCategories extends Component {
           <p>There was an error getting the list of product categories.</p>
         }
         {!!this.props.categories.length &&
-          <ul className="ProductCategories__list">
-            {this.props.categories.map(({title, id}) => (
-              <li key={id} className="ProductCategories__list-item">{title}</li>
-            ))}
-          </ul>
+          <div className="ProductCategories__list-wrapper">
+            <ul className="ProductCategories__list">
+              {this.props.categories.map(({title, id}) => (
+                <li key={id} className="ProductCategories__list-item">
+                  <button
+                    onClick={this.props.setActiveCategory.bind(this, id)}
+                    className={
+                      "ProductCategories__button " + 
+                      (this.props.activeCategory === id ? '--active' : null)
+                    }>{title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         }
       </div>
     )
@@ -28,15 +38,22 @@ class ProductCategories extends Component {
 }
 
 // eslint-disable-next-line
-const mapStateToProps = ({category}) => ({
+const mapStateToProps = ({home, category}) => ({
   categories: category.categories,
-  error: category.error
+  error: category.error,
+  activeCategory: home.activeCategory
 })
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchCategories: () => {
       dispatch(fetchCategories())
+    },
+    setActiveCategory: (id) => {
+      dispatch({
+        type: 'SET_ACTIVE_CATEGORY',
+        payload: { categoryId: id }
+      })
     }
   }
 }

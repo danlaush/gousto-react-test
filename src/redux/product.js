@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload.error,
-        PRODUCTS: []
+        products: []
       }
     
     default:

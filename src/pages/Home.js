@@ -9,7 +9,7 @@ const Home = (props) => (
   <div>
     <h1 className="title">Welcome to Gousto React Coding Test</h1>
     <ProductCategories />
-    <Products />
+    <Products activeCategory={props.activeCategory} />
     <p>
       <button onClick={() => props.changePage()}>
         Go to About page via router
@@ -19,7 +19,8 @@ const Home = (props) => (
 )
 
 // eslint-disable-next-line
-const mapStateToProps = ({ }) => ({
+const mapStateToProps = ({ home }) => ({
+  activeCategory: home.activeCategory
 })
 
 const mapDispatchToProps = dispatch =>

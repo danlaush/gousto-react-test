@@ -2,10 +2,18 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchProducts } from '../redux/actions/product'
 
-
 class Products extends Component {
   componentDidMount() {
     this.props.fetchProducts()
+  }
+
+  // Hide products that don't match the selected category
+  filterActiveCategory(product) {
+    return !this.props.activeCategory
+      ? product
+      : product.categories
+        .filter(c => c.id === this.props.activeCategory)
+        .length
   }
 
   render() {
@@ -17,7 +25,9 @@ class Products extends Component {
         }
         {!!this.props.products.length &&
           <ul>
-            {this.props.products.map(({title, id}) => (
+            {this.props.products
+              .filter(this.filterActiveCategory.bind(this))
+              .map(({title, id}) => (
               <li key={id}>{title}</li>
             ))}
           </ul>
