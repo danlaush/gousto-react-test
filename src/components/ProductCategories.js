@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchCategories } from '../redux/actions/category'
-
+import './ProductCategories.css'
 
 class ProductCategories extends Component {
   componentDidMount() {
@@ -13,12 +13,12 @@ class ProductCategories extends Component {
       <div>
         <h2 className="visually-hidden">Product Categories</h2>
         {!!this.props.error &&
-          <p>There was an error: {this.props.error.message}</p>
+          <p>There was an error getting the list of product categories.</p>
         }
         {!!this.props.categories.length &&
-          <ul>
+          <ul className="ProductCategories__list">
             {this.props.categories.map(({title, id}) => (
-              <li key={id}>{title}</li>
+              <li key={id} className="ProductCategories__list-item">{title}</li>
             ))}
           </ul>
         }
@@ -28,9 +28,9 @@ class ProductCategories extends Component {
 }
 
 // eslint-disable-next-line
-const mapStateToProps = ({home}) => ({
-  categories: home.categories,
-  error: home.error
+const mapStateToProps = ({category}) => ({
+  categories: category.categories,
+  error: category.error
 })
 
 const mapDispatchToProps = dispatch => {

@@ -1,0 +1,15 @@
+.ProductCategories__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: auto;
+}
+
+.ProductCategories__list-item {
+  flex-shrink: 0;
+
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  font-weight: bold;
+}
