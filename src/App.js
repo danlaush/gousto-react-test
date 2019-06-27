@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import About from './pages/About.js'
 import Home from './pages/Home.js'
 import './App.css'
@@ -14,8 +14,10 @@ class App extends Component {
         </header>
 
         <main>
-          <Route path="/:category?" component={Home} />
-          <Route exact path="/about-us" component={About} />
+          <Switch>
+            <Route path="/about-us" component={About} />
+            <Route path="/:category?" component={Home} />
+          </Switch>
         </main>
       </div>
     )
