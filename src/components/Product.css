@@ -4,5 +4,8 @@
   padding: 0;
   background: none;
   cursor: pointer;
+}
+
+.Product__toggle.--active {
   font-weight: bold;
 }

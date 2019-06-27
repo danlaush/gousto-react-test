@@ -12,7 +12,10 @@ export default class Product extends Component {
     return (
       <>
         <button
-          className="Product__toggle"
+          className={
+            "Product__toggle " + 
+            (this.state.isOpen ? '--active' : null)
+          }
           onClick={this.handleClick.bind(this)}
           aria-expanded={this.state.isOpen ? 'true' : 'false'}>{this.props.title}</button>
         {this.state.isOpen &&
