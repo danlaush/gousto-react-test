@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { fetchCategories } from '../redux/actions/category'
 import './ProductCategories.css'
+import { push } from 'connected-react-router'
 
 class ProductCategories extends Component {
   componentDidMount() {
@@ -24,7 +26,7 @@ class ProductCategories extends Component {
                     onClick={this.props.setActiveCategory.bind(this, id)}
                     className={
                       "ProductCategories__button " + 
-                      (this.props.activeCategory === id ? '--active' : null)
+                      (this.props.activeCategoryId === id ? '--active' : null)
                     }>{title}
                   </button>
                 </li>
@@ -38,26 +40,20 @@ class ProductCategories extends Component {
 }
 
 // eslint-disable-next-line
-const mapStateToProps = ({home, category}) => ({
+const mapStateToProps = ({home, category, router}) => ({
   categories: category.categories,
   error: category.error,
-  activeCategory: home.activeCategory
+  activeCategoryId: router.location.pathname.slice(1)
 })
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchCategories: () => {
-      dispatch(fetchCategories())
+const mapDispatchToProps = dispatch => 
+  bindActionCreators(
+    {
+      fetchCategories: () => fetchCategories(),
+      setActiveCategory: (id) => push(`/${id}`)
     },
-    setActiveCategory: (id) => {
-      dispatch({
-        type: 'SET_ACTIVE_CATEGORY',
-        payload: { categoryId: id }
-      })
-    }
-  }
-}
-  
+    dispatch
+  ) 
 
 export default connect(
   mapStateToProps,

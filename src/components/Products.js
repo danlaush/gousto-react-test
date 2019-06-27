@@ -49,10 +49,10 @@ class Products extends Component {
 }
 
 // eslint-disable-next-line
-const mapStateToProps = ({product, home}) => ({
+const mapStateToProps = ({product, home, router}) => ({
   products: product.products,
   error: product.error,
-  activeCategory: home.activeCategory,
+  activeCategory: router.location.pathname.slice(1),
   searchString: home.searchString
 })
 
