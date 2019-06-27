@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchProducts } from '../redux/actions/product'
+import Product from '../components/Product'
 
 class Products extends Component {
   componentDidMount() {
@@ -37,8 +38,7 @@ class Products extends Component {
               .filter(this.filterBySearchString.bind(this))
               .map(({title, id, description}) => (
               <li key={id}>
-                {title}
-                <p>{description}</p>
+                <Product title={title} description={description} />
               </li>
             ))}
           </ul>
