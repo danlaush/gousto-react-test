@@ -8,12 +8,19 @@ class Products extends Component {
   }
 
   // Hide products that don't match the selected category
-  filterActiveCategory(product) {
+  filterByActiveCategory(product) {
     return !this.props.activeCategory
       ? product
       : product.categories
         .filter(c => c.id === this.props.activeCategory)
         .length
+  }
+
+  filterBySearchString(product) {
+    return !this.props.searchString
+      ? product
+      : product.title.toLowerCase().includes(this.props.searchString.toLowerCase())
+        || product.description.toLowerCase().includes(this.props.searchString.toLowerCase())
   }
 
   render() {
@@ -26,9 +33,13 @@ class Products extends Component {
         {!!this.props.products.length &&
           <ul>
             {this.props.products
-              .filter(this.filterActiveCategory.bind(this))
-              .map(({title, id}) => (
-              <li key={id}>{title}</li>
+              .filter(this.filterByActiveCategory.bind(this))
+              .filter(this.filterBySearchString.bind(this))
+              .map(({title, id, description}) => (
+              <li key={id}>
+                {title}
+                <p>{description}</p>
+              </li>
             ))}
           </ul>
         }
@@ -38,9 +49,11 @@ class Products extends Component {
 }
 
 // eslint-disable-next-line
-const mapStateToProps = ({product}) => ({
+const mapStateToProps = ({product, home}) => ({
   products: product.products,
-  error: product.error
+  error: product.error,
+  activeCategory: home.activeCategory,
+  searchString: home.searchString
 })
 
 const mapDispatchToProps = dispatch => {

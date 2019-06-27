@@ -1,5 +1,6 @@
 const initialState = {
-  activeCategory: null
+  activeCategory: null,
+  searchString: ''
 }
 
 export default (state = initialState, action) => {
@@ -8,6 +9,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         activeCategory: action.payload.categoryId
+      }
+    case 'SET_SEARCH_STRING':
+      return {
+        ...state,
+        searchString: action.payload.searchString
       }
     default:
       return state

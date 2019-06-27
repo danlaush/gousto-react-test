@@ -4,12 +4,14 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ProductCategories from '../components/ProductCategories'
 import Products from '../components/Products'
+import ProductSearch from '../components/ProductSearch'
 
 const Home = (props) => (
   <div>
     <h1 className="title">Welcome to Gousto React Coding Test</h1>
     <ProductCategories />
-    <Products activeCategory={props.activeCategory} />
+    <ProductSearch />
+    <Products />
     <p>
       <button onClick={() => props.changePage()}>
         Go to About page via router
@@ -20,7 +22,6 @@ const Home = (props) => (
 
 // eslint-disable-next-line
 const mapStateToProps = ({ home }) => ({
-  activeCategory: home.activeCategory
 })
 
 const mapDispatchToProps = dispatch =>
