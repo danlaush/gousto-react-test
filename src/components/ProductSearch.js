@@ -18,8 +18,11 @@ class ProductSearch extends Component {
         <h2 className="visually-hidden">Search in products</h2>
         <input type="text"
           value={this.props.searchString}
-          onChange={this.handleChange.bind(this)} />
-        <button onClick={this.clearSearch.bind(this)}>Clear</button>
+          onChange={this.handleChange.bind(this)}
+          className="ProductSearch" />
+        <button
+          onClick={this.clearSearch.bind(this)}
+          className="ProductSearch__clear">Clear</button>
       </>
     )
   }

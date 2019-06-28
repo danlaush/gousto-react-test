@@ -32,7 +32,7 @@ class Products extends Component {
           <p>There was an error getting the list of products.</p>
         }
         {!!this.props.products.length &&
-          <ul>
+          <ul className="Products__list">
             {this.props.products
               .filter(this.filterByActiveCategory.bind(this))
               .filter(this.filterBySearchString.bind(this))

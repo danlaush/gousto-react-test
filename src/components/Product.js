@@ -12,10 +12,10 @@ export default class Product extends Component {
     return (
       <>
         <button
-          className={
-            "Product__toggle " + 
-            (this.state.isOpen ? '--active' : null)
-          }
+          className={[
+            "Product__toggle",
+            (this.state.isOpen ? '--active' : undefined)
+          ].filter(i => i).join(' ')}
           onClick={this.handleClick.bind(this)}
           aria-expanded={this.state.isOpen ? 'true' : 'false'}>{this.props.title}</button>
         {this.state.isOpen &&

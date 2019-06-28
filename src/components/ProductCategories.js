@@ -24,10 +24,10 @@ class ProductCategories extends Component {
                 <li key={id} className="ProductCategories__list-item">
                   <button
                     onClick={this.props.setActiveCategory.bind(this, id)}
-                    className={
-                      "ProductCategories__button " + 
-                      (this.props.activeCategoryId === id ? '--active' : null)
-                    }>{title}
+                    className={[
+                      "ProductCategories__button",
+                      (this.props.activeCategoryId === id ? '--active' : undefined)
+                    ].filter(i => i).join(' ')}>{title}
                   </button>
                 </li>
               ))}
