@@ -5,3 +5,9 @@
   color: #f6323e;
   font-family: Comfortaa,Helvetica,sans-serif;
 }
+
+.container {
+  max-width: 60em;
+  margin: 0 auto;
+  padding: 1rem;
+}

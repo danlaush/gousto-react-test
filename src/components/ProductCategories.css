@@ -1,0 +1,46 @@
+
+.ProductCategories__list-wrapper {
+  position: relative;
+}
+
+.ProductCategories__list-wrapper:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 10vw;
+  background: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    white
+    );
+}
+  
+.ProductCategories__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.ProductCategories__list-item {
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+.ProductCategories__button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ProductCategories__button.--active {
+  text-decoration: underline;
+}

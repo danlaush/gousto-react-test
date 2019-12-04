@@ -1,0 +1,11 @@
+.Product__toggle {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.Product__toggle.--active {
+  font-weight: bold;
+}

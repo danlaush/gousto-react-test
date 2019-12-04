@@ -6,11 +6,12 @@
     "start-windows": "SET PORT=3600 && react-scripts start",
     "build": "react-scripts build",
     "now-start": "serve -s ./build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "cypress run --config pageLoadTimeout=30000",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
   },
   "devDependencies": {
+    "cypress": "^3.3.2",
     "prettier": "1.16.4",
     "react-scripts": "^2.1.5"
   },
